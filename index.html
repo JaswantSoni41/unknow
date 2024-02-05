@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hackers Terminal</title>
+    <style>
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: black;
+        color: rgb(1, 185, 1);
+        font-family: monospace;
+        font-size: clamp(1rem, 0.7368rem + 1.3158vi, 2rem);
+      }
+
+      div{
+        padding: 2px;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    
+    <script>
+      const randomDelay = () => {
+        return new Promise((reslove, reject) => {
+          let timeout = 1 + Math.random() * 4;
+          setTimeout(() => {
+            reslove();
+          }, timeout * 1000);
+        });
+      };
+
+      async function main() {
+        const addItem = async (text) => {
+          await randomDelay();
+          let div = document.createElement("div");
+          div.innerHTML = text;
+          document.body.append(div);
+        };
+
+        let t = setInterval(() => {
+          let last = document.body.getElementsByTagName("div");
+          last = last[last.length - 1];
+
+          if (last.innerHTML.endsWith("...")) {
+            last.innerHTML = last.innerHTML.slice(0, last.innerHTML.length - 3);
+          } else {
+            last.innerHTML = last.innerHTML + ".";
+          }
+        }, 300);
+
+        let arr = [
+          "Initalizing Hacking",
+          "Reading Your Files",
+          "Passowrd Files Detected",
+          "Sending Files to the server",
+          "Cleaning Up",
+        ];
+
+        for (const text of arr) {
+          await addItem(text);
+        }
+
+        await randomDelay();
+        clearInterval(t);
+
+        document.body.innerHTML = document.body.innerHTML + "Done <br>";
+        document.body.innerHTML = document.body.innerHTML + "Now You Are Redirecting to Another Page";
+
+        setTimeout(() => {
+          window.location.href = "birthday.html";
+        }, 1000);
+      }
+
+      main();
+    </script>
+  </body>
+</html>

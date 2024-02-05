@@ -1,0 +1,13 @@
+@media (max-width:715px) {
+    .information{
+        top:10%;
+    }
+
+    .heading h1{
+        text-align: center;
+    }
+
+    .paragraph{
+        width: 95%;
+    }
+}
